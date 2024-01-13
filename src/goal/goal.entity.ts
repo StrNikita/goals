@@ -1,18 +1,8 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { BaseEntity } from '../common/base.entity';
 
 @Entity('goals')
-export class Goal {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
+export class Goal extends BaseEntity {
   @Column()
   name: string;
 

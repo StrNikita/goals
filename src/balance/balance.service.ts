@@ -17,6 +17,12 @@ export class BalanceService {
     return balance;
   }
 
+  public async create(userId: string): Promise<any> {
+    const balance = this.balanceRepository.create({ userId });
+    await this.balanceRepository.save(balance);
+    return true;
+  }
+
   public async topup(sum: number) {
     const balance = await this.get();
     balance.balance = Math.round(balance.balance + +sum);

@@ -1,4 +1,5 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
+import { User } from '../user/user.entity';
 import { BaseEntity } from '../common/base.entity';
 
 @Entity('goals')
@@ -15,14 +16,6 @@ export class Goal extends BaseEntity {
   @Column({ default: false })
   isComplete: boolean;
 
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @Exclude()
-  @UpdateDateColumn()
-  updatedAt: Date;
-
-  @Exclude()
-  @DeleteDateColumn()
-  deletedAt: Date;
+  @ManyToOne(() => User, (user) => user.goals)
+  user: User;
 }

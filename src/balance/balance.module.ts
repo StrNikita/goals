@@ -9,6 +9,6 @@ import { GoalModule } from '../goal/goal.module';
   imports: [TypeOrmModule.forFeature([Balance]), GoalModule],
   controllers: [BalanceController],
   providers: [BalanceService],
-  exports: [],
+  exports: [BalanceService],
 })
 export class BalanceModule {}

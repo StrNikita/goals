@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    container_name: goal_db
+    image: postgres:14
+    environment:
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD}'
+      POSTGRES_DB: '${DB_NAME}'
+    ports:
+      - '${DB_PORT:-5432}:5432'
+    volumes:
+      - goal_backend_pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  goal_backend_pgdata:
